@@ -19,3 +19,4 @@ with col2:
     """
     st.info(content)
 
+st.write("Below you can find some of the apps i have built in python. Feel free to contact me!")
