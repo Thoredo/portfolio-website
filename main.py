@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(layout="wide")
 
@@ -10,13 +11,28 @@ with col1:
 with col2:
     st.title("Jurgen Stegeman")
     content = """
-    Hello, I am Jurgen! I'm a starting developer, in my life i have done lots of different studies and jobs.
-    But I always had an itch for programming, after a period of sickness I decided to use my time to learn something new.
-    I started learning HTML, CSS and JavaScript.I had a lot of fun learning them especially JS.
-    But I wasn't sure what i wanted to do yet so after a orientation program through Techgrounds, 
-    i started a data engineer course through Bit Academy.
-    I loved coding in Python so i decided to learn as much as i could about Python.
+    Hello, I am Jurgen! I'm a starting developer, in my life I have done lots of 
+    different studies and jobs. But I always had an itch for programming, after 
+    a period of sickness I decided to use my time to learn something new.
+    I started learning HTML, CSS and JavaScript.I had a lot of fun learning them 
+    especially JS. But I wasn't sure what I wanted to do yet so after a 
+    orientation program through Techgrounds, I started a data engineer course 
+    through Bit Academy. I loved coding in Python so I decided to learn as 
+    much as I could about Python.
     """
     st.info(content)
 
-st.write("Below you can find some of the apps i have built in python. Feel free to contact me!")
+st.write("Below you can find some of the apps i have built in python. \
+         Feel free to contact me!")
+
+col3, col4 = st.columns(2)
+
+df = pd.read_csv("data.csv", sep=";")
+
+with col3:
+   for index, row in df[:10].iterrows():
+       st.header(row["title"])
+
+with col4:
+    for index, row in df[10:].iterrows():
+       st.header(row["title"])
